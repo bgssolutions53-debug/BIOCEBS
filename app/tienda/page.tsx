@@ -36,7 +36,7 @@ const supplements = [
     descriptionEN:
       "Provides antioxidants and collagen, and incorporates Adaptogens that help reduce stress and improve overall skin health.",
     price: "$600.00 MXN",
-    image: "/bio-skin-supplement-jar.jpg",
+    image: "/bio-skin.jpg",
     category: "Suplementos",
     categoryEN: "Supplements",
   },
@@ -58,7 +58,7 @@ const supplements = [
     descriptionEN:
       "L-Carnitine facilitates fat burning and improves endurance during exercise. Combined with more ingredients, it creates an effective formula for weight loss.",
     price: "$600.00 MXN",
-    image: "/bio-slim-supplement-jar.jpg",
+    image: "/bio-slim.jpg",
     category: "Suplementos",
     categoryEN: "Supplements",
   },
@@ -69,7 +69,7 @@ const supplements = [
     descriptionEN:
       "Provides additional support through its Adaptogenic, anti-inflammatory and antioxidant properties, promoting optimal kidney health.",
     price: "$600.00 MXN",
-    image: "/bio-ren-supplement-jar.jpg",
+    image: "/bio-ren.jpg",
     category: "Suplementos",
     categoryEN: "Supplements",
   },
@@ -80,7 +80,7 @@ const supplements = [
     descriptionEN:
       "Using antioxidants present in Chaga mushroom, Golden Berry, green tea, noni, moringa and kale. Neutralizes free radicals.",
     price: "$600.00 MXN",
-    image: "/bio-o-supplement-jar.jpg",
+    image: "/bio-o.jpg",
     category: "Suplementos",
     categoryEN: "Supplements",
   },
@@ -91,7 +91,7 @@ const supplements = [
     descriptionEN:
       "Adaptogens like Cordyceps, Rhodiola and Panax Ginseng in combination help the body resist stress and improve physical and mental energy.",
     price: "$700.00 MXN",
-    image: "/bio-speed-supplement-jar.jpg",
+    image: "/bio-speed.jpg",
     category: "Suplementos",
     categoryEN: "Supplements",
   },
@@ -102,7 +102,7 @@ const supplements = [
     descriptionEN:
       "Adaptogens like Schizandra, Rhodiola and Shatavari help the body resist stress and balance hormones creating a powerful formula to support hormonal health in young women.",
     price: "$600.00 MXN",
-    image: "/bio-fem-supplement-jar.jpg",
+    image: "/bio-fem.jpg",
     category: "Suplementos",
     categoryEN: "Supplements",
   },
@@ -113,7 +113,7 @@ const supplements = [
     descriptionEN:
       "Phytoestrogens present in black cohosh help balance hormonal levels, their combination with more ingredients results in a powerful synergy to support hormonal health in mature women.",
     price: "$700.00 MXN",
-    image: "/bio-clim-supplement-jar.jpg",
+    image: "/bio-clim.jpg",
     category: "Suplementos",
     categoryEN: "Supplements",
   },
@@ -124,7 +124,7 @@ const supplements = [
     descriptionEN:
       "Supports increased energy, endurance and libido, combining Adaptogens, anti-inflammatories, antioxidants, essential nutrients and testosterone boosters to improve male vitality.",
     price: "$600.00 MXN",
-    image: "/bio-h-supplement-jar.jpg",
+    image: "/bio-h.jpg",
     category: "Suplementos",
     categoryEN: "Supplements",
   },

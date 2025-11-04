@@ -18,7 +18,7 @@ const blogArticles = [
     excerpt:
       "Descubre cómo estas plantas medicinales ayudan a tu cuerpo a resistir el estrés físico, químico y biológico.",
     excerptEn: "Discover how these medicinal plants help your body resist physical, chemical and biological stress.",
-    image: "/adaptogenic-herbs-natural-medicine.jpg",
+    image: "/medicinafncional.jpg",
     date: "15 Marzo 2025",
     dateEn: "March 15, 2025",
     slug: "adaptogenos-medicina-funcional",
@@ -32,7 +32,7 @@ const blogArticles = [
     excerpt:
       "Conoce cómo las células madre pueden regenerar tejidos dañados y restaurar funciones deterioradas del organismo.",
     excerptEn: "Learn how stem cells can regenerate damaged tissues and restore deteriorated body functions.",
-    image: "/stem-cells-regenerative-medicine.jpg",
+    image: "/medicinaregenerativa.jpg",
     date: "10 Marzo 2025",
     dateEn: "March 10, 2025",
     slug: "celulas-madre-medicina-regenerativa",
@@ -46,7 +46,7 @@ const blogArticles = [
     excerpt:
       "El 90% de la serotonina se produce en el intestino. Aprende cómo mejorar tu microbiota para mejorar tu ánimo.",
     excerptEn: "90% of serotonin is produced in the gut. Learn how to improve your microbiota to improve your mood.",
-    image: "/gut-brain-connection-microbiome.jpg",
+    image: "/saludmental.jpg",
     date: "5 Marzo 2025",
     dateEn: "March 5, 2025",
     slug: "conexion-intestino-cerebro",
@@ -60,7 +60,7 @@ const blogArticles = [
     excerpt:
       "Descubre cómo la administración intravenosa de vitaminas y minerales puede optimizar tu salud de forma rápida.",
     excerptEn: "Discover how intravenous administration of vitamins and minerals can optimize your health quickly.",
-    image: "/iv-therapy-wellness-treatment.jpg",
+    image: "/sueroterapia.jpg",
     date: "28 Febrero 2025",
     dateEn: "February 28, 2025",
     slug: "sueroterapia-nutricion-celular",
@@ -74,7 +74,7 @@ const blogArticles = [
     excerpt:
       "El microneedling con activos clínicos estimula colágeno, mejora textura y reduce manchas de forma natural.",
     excerptEn: "Microneedling with clinical actives stimulates collagen, improves texture and reduces spots naturally.",
-    image: "/dermapen-microneedling-skin-treatment.jpg",
+    image: "/esteticafuncional.jpg",
     date: "20 Febrero 2025",
     dateEn: "February 20, 2025",
     slug: "dermapen-regeneracion-cutanea",
@@ -88,7 +88,7 @@ const blogArticles = [
     excerpt:
       "Conoce cómo el NAD+ mejora la energía celular, la reparación del ADN y retrasa el envejecimiento biológico.",
     excerptEn: "Learn how NAD+ improves cellular energy, DNA repair and delays biological aging.",
-    image: "/nad-molecule-cellular-energy.jpg",
+    image: "/ciencia.jpg",
     date: "12 Febrero 2025",
     dateEn: "February 12, 2025",
     slug: "nad-molecula-anti-envejecimiento",
