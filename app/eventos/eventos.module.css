@@ -1,0 +1,217 @@
+.main {
+  min-height: 100vh;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--sage-green) 0%, var(--medium-green) 100%);
+  color: white;
+  padding: 8rem 0 6rem;
+  text-align: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-family: var(--font-primary);
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.heroSubtitle {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.section {
+  padding: 6rem 0;
+  background-color: #fff;
+}
+
+.sectionAlt {
+  padding: 6rem 0;
+  background-color: var(--off-white);
+}
+
+.sectionTitle {
+  font-family: var(--font-primary);
+  font-size: 2.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--dark-green);
+}
+
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.eventCard {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--light-grey-green);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.eventCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(63, 77, 61, 0.15);
+}
+
+.eventBadge {
+  display: inline-block;
+  background: var(--sage-green);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.eventCard h3 {
+  font-family: var(--font-primary);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--dark-green);
+  margin-bottom: 1.5rem;
+}
+
+.eventMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--medium-green);
+  font-size: 0.95rem;
+}
+
+.metaItem svg {
+  color: var(--sage-green);
+}
+
+.eventCard p {
+  line-height: 1.7;
+  color: var(--medium-green);
+  margin-bottom: 1.5rem;
+}
+
+.eventButton {
+  width: 100%;
+  padding: 0.9rem 2rem;
+  background: var(--sage-green);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.eventButton:hover {
+  background: var(--dark-green);
+}
+
+.pastEventsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.pastEventCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--light-grey-green);
+  text-align: center;
+}
+
+.pastEventCard h4 {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  color: var(--dark-green);
+  margin-bottom: 0.5rem;
+}
+
+.pastEventCard p {
+  color: var(--medium-green);
+  font-size: 0.9rem;
+}
+
+.ctaBox {
+  background: linear-gradient(135deg, var(--sage-green) 0%, var(--dark-green) 100%);
+  color: white;
+  padding: 4rem;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ctaBox h2 {
+  font-family: var(--font-primary);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.ctaBox p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.ctaButton {
+  padding: 1rem 3rem;
+  background: white;
+  color: var(--dark-green);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .eventsGrid,
+  .pastEventsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaBox {
+    padding: 3rem 2rem;
+  }
+
+  .ctaBox h2 {
+    font-size: 2rem;
+  }
+}

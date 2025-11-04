@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Genera un sitio estático en la carpeta `out`
+  output: 'export',
 };
 
-export default nextConfig;
+module.exports = nextConfig;

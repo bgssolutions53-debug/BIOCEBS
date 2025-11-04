@@ -1,0 +1,94 @@
+.section {
+  padding: 6rem 0;
+  /* Added background image with overlay */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+    url("/biocebsport.jpg.");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-primary);
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--dark-green);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--medium-green);
+  margin-bottom: 4rem;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+
+.stepCard {
+  flex-basis: 33%;
+  padding: 2rem;
+}
+
+.icon {
+  color: var(--sage-green);
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.stepCard h3 {
+  font-family: var(--font-primary);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--dark-green);
+}
+
+.stepCard p {
+  color: var(--medium-green);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.ctaWrapper {
+  margin-top: 3rem;
+}
+
+.ctaButton {
+  font-family: var(--font-secondary);
+  background-color: var(--sage-green);
+  color: #fff;
+  padding: 14px 35px;
+  text-decoration: none;
+  font-weight: 400;
+  border-radius: 5px;
+  font-size: 1rem;
+  border: 1px solid var(--sage-green);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.ctaButton:hover {
+  background-color: var(--dark-green);
+  border-color: var(--dark-green);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .steps {
+    flex-direction: column;
+  }
+}

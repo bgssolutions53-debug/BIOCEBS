@@ -1,0 +1,193 @@
+.navbar {
+  width: 100%;
+  padding: 1.2rem 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid var(--light-grey-green);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-primary);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--dark-green);
+  text-decoration: none;
+  /* Added styles for logo image container */
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: auto;
+  width: auto;
+  max-height: 50px;
+  object-fit: contain;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: var(--medium-green);
+  font-weight: 400;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+  color: var(--dark-green);
+}
+
+.navExtra {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Added language dropdown styles */
+.langDropdown {
+  position: relative;
+}
+
+.langLabel {
+  font-size: 0.75rem;
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+.langMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background-color: white;
+  border: 1px solid var(--light-grey-green);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 120px;
+  z-index: 1000;
+}
+
+.langMenu button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  color: var(--medium-green);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.langMenu button:hover {
+  background-color: var(--off-white);
+  color: var(--dark-green);
+}
+
+.langMenu button.active {
+  background-color: var(--sage-green);
+  color: white;
+  font-weight: 500;
+}
+
+.navIcon {
+  color: var(--medium-green);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navIcon:hover {
+  color: var(--dark-green);
+}
+
+.navToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.navToggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--dark-green);
+  transition: all 0.3s ease;
+}
+
+.navToggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navToggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.navToggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+@media (max-width: 768px) {
+  .navToggle {
+    display: flex;
+  }
+
+  .navMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: var(--off-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.4s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .navMenu.active {
+    right: 0;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .navLinks a {
+    font-size: 1.5rem;
+    color: var(--dark-green);
+  }
+}
