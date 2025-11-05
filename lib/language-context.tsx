@@ -1,0 +1,362 @@
+"use client"
+
+import { createContext, useContext, useState, type ReactNode } from "react"
+
+type Language = "es" | "en"
+
+interface LanguageContextType {
+  language: Language
+  setLanguage: (lang: Language) => void
+  t: (key: string) => string
+}
+
+const translations = {
+  es: {
+    // Navbar
+    "nav.home": "Inicio",
+    "nav.about": "Nosotros",
+    "nav.services": "Servicios",
+    "nav.shop": "Tienda",
+    "nav.blog": "Blog",
+    "nav.events": "Eventos",
+    "nav.contact": "Contacto",
+
+    // Hero
+    "hero.title": "Ciencia y Naturaleza en Equilibrio",
+    "hero.subtitle": "Redescubre tu bienestar con medicina funcional y suplementos puros diseñados para ti.",
+    "hero.cta": "Explorar Productos",
+
+    // Trust Bar
+    "trust.quality": "Calidad Premium",
+    "trust.natural": "Ingredientes Naturales",
+    "trust.science": "Respaldado por la Ciencia",
+    "trust.support": "Soporte Personalizado",
+
+    // Categories
+    "categories.title": "Encuentra tu Bienestar",
+    "categories.subtitle": "Explora nuestras líneas de tratamiento y productos especializados",
+    "categories.dermapen.title": "Tratamientos Dermapen",
+    "categories.dermapen.subtitle": "9 tratamientos regenerativos",
+    "categories.dermapen.description": "Microneedling con activos clínicos",
+    "categories.botox.title": "Toxina Botulínica",
+    "categories.botox.subtitle": "Estética y terapéutica",
+    "categories.botox.description": "Rejuvenecimiento facial funcional",
+    "categories.sueroterapia.title": "Sueroterapia",
+    "categories.sueroterapia.subtitle": "15 fórmulas especializadas",
+    "categories.sueroterapia.description": "Nutrición celular intravenosa",
+    "categories.suplementos.title": "Suplementos",
+    "categories.suplementos.subtitle": "12 fórmulas adaptogénicas",
+    "categories.suplementos.description": "Bienestar integral natural",
+    "categories.servicios.title": "Servicios Médicos",
+    "categories.servicios.subtitle": "Consultas y diagnósticos",
+    "categories.servicios.description": "Atención integral personalizada",
+    "categories.membresias.title": "Membresías",
+    "categories.membresias.subtitle": "Basic y Plus",
+    "categories.membresias.description": "Beneficios exclusivos anuales",
+
+    // Featured Products
+    "featured.title": "Los Más Vendidos",
+    "featured.subtitle": "Descubre nuestros suplementos más populares",
+    "featured.cta": "Ver Detalles",
+    "products.biocalm.description": "Reduce el estrés y mejora tu claridad mental de manera natural.",
+    "products.biobrain.description": "Potencia tu mente, memoria y agilidad mental con adaptógenos.",
+    "products.biogastro.description": "Restaura tu flora intestinal con hongos funcionales.",
+
+    // Philosophy
+    "philosophy.title": "¿Primera vez en BIOCEBS?",
+    "philosophy.subtitle": "Así comienza tu tratamiento integral.",
+    "philosophy.step1": "Consulta",
+    "philosophy.step1.desc": "Entendemos tu biología única y tus objetivos de salud.",
+    "philosophy.step2": "Protocolo",
+    "philosophy.step2.desc": "Diseñamos un plan personalizado con suplementación funcional.",
+    "philosophy.step3": "Seguimiento",
+    "philosophy.step3.desc": "Ajustamos y optimizamos tu camino hacia el bienestar.",
+    "philosophy.cta": "Agendar una Valoración",
+
+    // Contact
+    "contact.title": "Contáctanos",
+    "contact.subtitle": "Estamos aquí para ayudarte en tu camino hacia el bienestar",
+    "contact.name": "Nombre completo",
+    "contact.email": "Correo electrónico",
+    "contact.phone": "Teléfono",
+    "contact.message": "Mensaje",
+    "contact.send": "Enviar Mensaje",
+    "contact.info": "Información de Contacto",
+    "contact.address": "Dirección",
+    "contact.hours": "Horario de Atención",
+    "contact.hours.value": "Lun - Vie: 9:00 AM - 6:00 PM",
+    "contact.location": "Periférico Raul Lopez Sanchez 5000, Local 39",
+    "contact.location2": "Colonia el Fresno, Torreón, Coahuila 27018",
+
+    // About Us
+    "about.title": "¿Quiénes Somos?",
+    "about.subtitle":
+      "Somos un ecosistema integral de medicina funcional, ciencia aplicada y bienestar humano, comprometidos con transformar la salud desde sus raíces.",
+
+    "about.mission.title": "Misión",
+    "about.mission.text":
+      "En BIOCEBS tenemos como misión impulsar el bienestar integral del ser humano mediante un enfoque multidimensional, centrado en la medicina funcional, la investigación aplicada, la innovación terapéutica y la educación clínica. A través de nuestras líneas de productos, servicios especializados y programas de formación, buscamos brindar soluciones concretas, personalizadas y sustentadas en evidencia científica.",
+
+    "about.vision.title": "Visión",
+    "about.vision.text":
+      "Consolidarnos como el ecosistema líder de medicina funcional y terapias avanzadas en el mundo hispano, siendo reconocidos por la excelencia de nuestros productos, la profundidad de nuestros procesos formativos, la integridad de nuestro modelo clínico y la innovación en cada una de nuestras soluciones.",
+
+    "about.values.title": "Valores Corporativos",
+    "about.values.ethics": "Ética",
+    "about.values.ethics.desc":
+      "Actuar con integridad, profesionalismo y responsabilidad en cada proceso, garantizando prácticas clínicas y comerciales basadas en principios éticos universales.",
+    "about.values.science": "Ciencia",
+    "about.values.science.desc":
+      "Fundar todos nuestros productos, servicios y contenidos en evidencia científica actualizada y validada, fomentando la investigación constante y el pensamiento crítico.",
+    "about.values.innovation": "Innovación",
+    "about.values.innovation.desc":
+      "Diseñar soluciones terapéuticas, académicas y tecnológicas que anticipen las necesidades del entorno y mejoren los resultados clínicos, educativos y empresariales.",
+    "about.values.humanism": "Humanismo",
+    "about.values.humanism.desc":
+      "Poner al ser humano en el centro de todas nuestras acciones, reconociendo su complejidad biopsicosocial y su potencial de desarrollo integral.",
+    "about.values.community": "Comunidad",
+    "about.values.community.desc":
+      "Generar redes de colaboración entre profesionales, pacientes, instituciones y aliados, promoviendo una cultura de cooperación, intercambio de saberes y crecimiento colectivo.",
+    "about.values.transparency": "Transparencia",
+    "about.values.transparency.desc":
+      "Mantener una comunicación clara, honesta y documentada con nuestros clientes, colaboradores y aliados estratégicos, estableciendo relaciones de confianza a largo plazo.",
+
+    "about.differentiators.title": "Diferenciadores Clave",
+    "about.differentiators.integration": "Integración Clínica-Académica-Comercial",
+    "about.differentiators.integration.desc":
+      "BIOCEBS no es únicamente una marca de suplementos, ni una clínica funcional, ni una academia: es un ecosistema completo en el que producto, formación y atención clínica interactúan con coherencia.",
+    "about.differentiators.community": "Comunidad Profesional Ética",
+    "about.differentiators.community.desc":
+      "Promovemos la formación de una comunidad médica y científica ética, crítica, colaborativa y comprometida con prácticas funcionales basadas en evidencia.",
+    "about.differentiators.systemic": "Enfoque Sistémico y Personalizado",
+    "about.differentiators.systemic.desc":
+      "Todos los productos y servicios se estructuran en torno al concepto de medicina funcional aplicada por sistemas, permitiendo estrategias personalizadas.",
+    "about.differentiators.capacity": "Alta Capacidad Operativa",
+    "about.differentiators.capacity.desc":
+      "Trabajamos con proveedores certificados, capacidad de producción propia y sistema logístico en desarrollo, manteniendo control de calidad y escalabilidad comercial.",
+
+    "about.departments.title": "Departamentos Operativos",
+    "about.departments.subtitle":
+      "BIOCEBS se organiza mediante una estructura funcional basada en departamentos estratégicos, cada uno con funciones definidas y líneas de responsabilidad.",
+    "about.departments.biocommunity":
+      "Construcción de una comunidad ética de profesionales en medicina funcional, fomento de la colaboración, investigación y formación continua.",
+    "about.departments.biodesign":
+      "Dirección de identidad visual, diseño gráfico, empaques y branding. Producción de material digital y físico para marketing, cursos y eventos.",
+    "about.departments.bioip":
+      "Registro y protección de fórmulas, cursos, libros y materiales creados por BIOCEBS. Organización y archivo de expedientes legales e institucionales.",
+    "about.departments.biomed":
+      "Coordinación del equipo médico, supervisión de procesos clínicos, terapias, protocolos y consultas. Validación médica de productos y programas.",
+    "about.departments.biorganic":
+      "Supervisión de la línea de suplementos y materias primas. Gestión de maquila, empaques, etiquetas y proveedores.",
+    "about.departments.more": "Y más departamentos",
+    "about.departments.more.desc":
+      "Contamos con 14 departamentos especializados que trabajan en sinergia para ofrecer soluciones integrales de salud y bienestar.",
+
+    "about.worklines.title": "Líneas de Trabajo",
+    "about.worklines.functional": "Medicina Funcional",
+    "about.worklines.functional.desc": "Consultas integrales, diagnóstico avanzado y tratamientos personalizados",
+    "about.worklines.aesthetic": "Estética Regenerativa",
+    "about.worklines.aesthetic.desc": "Dermapen, toxina botulínica, bioestimulación y rejuvenecimiento facial",
+    "about.worklines.serum": "Sueroterapia",
+    "about.worklines.serum.desc": "Nutrición celular intravenosa con fórmulas especializadas",
+    "about.worklines.supplements": "Suplementación",
+    "about.worklines.supplements.desc": "Adaptógenos y nutracéuticos de alta calidad terapéutica",
+    "about.worklines.cellular": "Terapia Celular",
+    "about.worklines.cellular.desc": "Células madre y medicina regenerativa avanzada",
+    "about.worklines.education": "Educación Médica",
+    "about.worklines.education.desc": "Capacitación, webinars y giras médicas para profesionales",
+
+    // Blog
+    "blog.title": "Blog de Bienestar",
+    "blog.subtitle": "Artículos científicos sobre medicina funcional, nutrición y bienestar integral",
+    "blog.readmore": "Leer más",
+    "blog.newsletter.title": "Suscríbete a nuestro Newsletter",
+    "blog.newsletter.subtitle": "Recibe artículos exclusivos, tips de salud y novedades de BIOCEBS",
+    "blog.newsletter.placeholder": "Tu correo electrónico",
+    "blog.newsletter.button": "Suscribirme",
+  },
+  en: {
+    // Navbar
+    "nav.home": "Home",
+    "nav.about": "About Us",
+    "nav.services": "Services",
+    "nav.shop": "Shop",
+    "nav.blog": "Blog",
+    "nav.events": "Events",
+    "nav.contact": "Contact",
+
+    // Hero
+    "hero.title": "Science and Nature in Balance",
+    "hero.subtitle": "Rediscover your wellness with functional medicine and pure supplements designed for you.",
+    "hero.cta": "Explore Products",
+
+    // Trust Bar
+    "trust.quality": "Premium Quality",
+    "trust.natural": "Natural Ingredients",
+    "trust.science": "Science-Backed",
+    "trust.support": "Personalized Support",
+
+    // Categories
+    "categories.title": "Find Your Wellness",
+    "categories.subtitle": "Explore our treatment lines and specialized products",
+    "categories.dermapen.title": "Dermapen Treatments",
+    "categories.dermapen.subtitle": "9 regenerative treatments",
+    "categories.dermapen.description": "Microneedling with clinical actives",
+    "categories.botox.title": "Botulinum Toxin",
+    "categories.botox.subtitle": "Aesthetic and therapeutic",
+    "categories.botox.description": "Functional facial rejuvenation",
+    "categories.sueroterapia.title": "IV Therapy",
+    "categories.sueroterapia.subtitle": "15 specialized formulas",
+    "categories.sueroterapia.description": "Intravenous cellular nutrition",
+    "categories.suplementos.title": "Supplements",
+    "categories.suplementos.subtitle": "12 adaptogenic formulas",
+    "categories.suplementos.description": "Natural integral wellness",
+    "categories.servicios.title": "Medical Services",
+    "categories.servicios.subtitle": "Consultations and diagnostics",
+    "categories.servicios.description": "Personalized comprehensive care",
+    "categories.membresias.title": "Memberships",
+    "categories.membresias.subtitle": "Basic and Plus",
+    "categories.membresias.description": "Exclusive annual benefits",
+
+    // Featured Products
+    "featured.title": "Best Sellers",
+    "featured.subtitle": "Discover our most popular supplements",
+    "featured.cta": "View Details",
+    "products.biocalm.description": "Reduce stress and improve mental clarity naturally.",
+    "products.biobrain.description": "Boost your mind, memory and mental agility with adaptogens.",
+    "products.biogastro.description": "Restore your intestinal flora with functional mushrooms.",
+
+    // Philosophy
+    "philosophy.title": "First time at BIOCEBS?",
+    "philosophy.subtitle": "This is how your comprehensive treatment begins.",
+    "philosophy.step1": "Consultation",
+    "philosophy.step1.desc": "We understand your unique biology and health goals.",
+    "philosophy.step2": "Protocol",
+    "philosophy.step2.desc": "We design a personalized plan with functional supplementation.",
+    "philosophy.step3": "Follow-up",
+    "philosophy.step3.desc": "We adjust and optimize your path to wellness.",
+    "philosophy.cta": "Schedule an Assessment",
+
+    // Contact
+    "contact.title": "Contact Us",
+    "contact.subtitle": "We're here to help you on your wellness journey",
+    "contact.name": "Full name",
+    "contact.email": "Email address",
+    "contact.phone": "Phone",
+    "contact.message": "Message",
+    "contact.send": "Send Message",
+    "contact.info": "Contact Information",
+    "contact.address": "Address",
+    "contact.hours": "Business Hours",
+    "contact.hours.value": "Mon - Fri: 9:00 AM - 6:00 PM",
+    "contact.location": "Periférico Raul Lopez Sanchez 5000, Local 39",
+    "contact.location2": "Colonia el Fresno, Torreón, Coahuila 27018",
+
+    // About Us
+    "about.title": "About Us",
+    "about.subtitle":
+      "We are a comprehensive ecosystem of functional medicine, applied science and human wellness, committed to transforming health from its roots.",
+
+    "about.mission.title": "Mission",
+    "about.mission.text":
+      "At BIOCEBS, our mission is to promote comprehensive human well-being through a multidimensional approach, focused on functional medicine, applied research, therapeutic innovation and clinical education. Through our product lines, specialized services and training programs, we seek to provide concrete, personalized solutions based on scientific evidence.",
+
+    "about.vision.title": "Vision",
+    "about.vision.text":
+      "To establish ourselves as the leading ecosystem of functional medicine and advanced therapies in the Hispanic world, recognized for the excellence of our products, the depth of our training processes, the integrity of our clinical model and innovation in each of our solutions.",
+
+    "about.values.title": "Corporate Values",
+    "about.values.ethics": "Ethics",
+    "about.values.ethics.desc":
+      "Act with integrity, professionalism and responsibility in every process, ensuring clinical and commercial practices based on universal ethical principles.",
+    "about.values.science": "Science",
+    "about.values.science.desc":
+      "Base all our products, services and content on updated and validated scientific evidence, fostering constant research and critical thinking.",
+    "about.values.innovation": "Innovation",
+    "about.values.innovation.desc":
+      "Design therapeutic, academic and technological solutions that anticipate environmental needs and improve clinical, educational and business results.",
+    "about.values.humanism": "Humanism",
+    "about.values.humanism.desc":
+      "Put the human being at the center of all our actions, recognizing their biopsychosocial complexity and their potential for comprehensive development.",
+    "about.values.community": "Community",
+    "about.values.community.desc":
+      "Generate collaboration networks between professionals, patients, institutions and allies, promoting a culture of cooperation, knowledge exchange and collective growth.",
+    "about.values.transparency": "Transparency",
+    "about.values.transparency.desc":
+      "Maintain clear, honest and documented communication with our clients, collaborators and strategic allies, establishing long-term trust relationships.",
+
+    "about.differentiators.title": "Key Differentiators",
+    "about.differentiators.integration": "Clinical-Academic-Commercial Integration",
+    "about.differentiators.integration.desc":
+      "BIOCEBS is not just a supplement brand, nor a functional clinic, nor an academy: it is a complete ecosystem where product, training and clinical care interact coherently.",
+    "about.differentiators.community": "Ethical Professional Community",
+    "about.differentiators.community.desc":
+      "We promote the formation of an ethical, critical, collaborative medical and scientific community committed to evidence-based functional practices.",
+    "about.differentiators.systemic": "Systemic and Personalized Approach",
+    "about.differentiators.systemic.desc":
+      "All products and services are structured around the concept of functional medicine applied by systems, allowing personalized strategies.",
+    "about.differentiators.capacity": "High Operational Capacity",
+    "about.differentiators.capacity.desc":
+      "We work with certified suppliers, own production capacity and developing logistics system, maintaining quality control and commercial scalability.",
+
+    "about.departments.title": "Operational Departments",
+    "about.departments.subtitle":
+      "BIOCEBS is organized through a functional structure based on strategic departments, each with defined functions and lines of responsibility.",
+    "about.departments.biocommunity":
+      "Building an ethical community of functional medicine professionals, fostering collaboration, research and continuous training.",
+    "about.departments.biodesign":
+      "Direction of visual identity, graphic design, packaging and branding. Production of digital and physical material for marketing, courses and events.",
+    "about.departments.bioip":
+      "Registration and protection of formulas, courses, books and materials created by BIOCEBS. Organization and filing of legal and institutional records.",
+    "about.departments.biomed":
+      "Coordination of the medical team, supervision of clinical processes, therapies, protocols and consultations. Medical validation of products and programs.",
+    "about.departments.biorganic":
+      "Supervision of the supplement and raw materials line. Management of maquila, packaging, labels and suppliers.",
+    "about.departments.more": "And more departments",
+    "about.departments.more.desc":
+      "We have 14 specialized departments working in synergy to offer comprehensive health and wellness solutions.",
+
+    "about.worklines.title": "Work Lines",
+    "about.worklines.functional": "Functional Medicine",
+    "about.worklines.functional.desc": "Comprehensive consultations, advanced diagnostics and personalized treatments",
+    "about.worklines.aesthetic": "Regenerative Aesthetics",
+    "about.worklines.aesthetic.desc": "Dermapen, botulinum toxin, biostimulation and facial rejuvenation",
+    "about.worklines.serum": "IV Therapy",
+    "about.worklines.serum.desc": "Intravenous cellular nutrition with specialized formulas",
+    "about.worklines.supplements": "Supplementation",
+    "about.worklines.supplements.desc": "Adaptogens and nutraceuticals of high therapeutic quality",
+    "about.worklines.cellular": "Cellular Therapy",
+    "about.worklines.cellular.desc": "Stem cells and advanced regenerative medicine",
+    "about.worklines.education": "Medical Education",
+    "about.worklines.education.desc": "Training, webinars and medical tours for professionals",
+
+    // Blog
+    "blog.title": "Wellness Blog",
+    "blog.subtitle": "Scientific articles on functional medicine, nutrition and comprehensive wellness",
+    "blog.readmore": "Read more",
+    "blog.newsletter.title": "Subscribe to our Newsletter",
+    "blog.newsletter.subtitle": "Receive exclusive articles, health tips and BIOCEBS news",
+    "blog.newsletter.placeholder": "Your email address",
+    "blog.newsletter.button": "Subscribe",
+  },
+}
+
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [language, setLanguage] = useState<Language>("es")
+
+  const t = (key: string): string => {
+    return translations[language][key as keyof typeof translations.es] || key
+  }
+
+  return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>
+}
+
+export function useLanguage() {
+  const context = useContext(LanguageContext)
+  if (context === undefined) {
+    throw new Error("useLanguage must be used within a LanguageProvider")
+  }
+  return context
+}
